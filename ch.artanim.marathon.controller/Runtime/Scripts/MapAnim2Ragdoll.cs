@@ -72,7 +72,7 @@ public class MapAnim2Ragdoll : MonoBehaviour, IOnSensorCollision, IKinematicRefe
     public bool doFixedUpdate = true;
 
 	bool _hasLazyInitialized;
-
+	public bool HasLazyInitialized { get => _hasLazyInitialized; }
 	bool _hackyNavAgentMode;
 
 	Collider _root;
@@ -331,6 +331,8 @@ public class MapAnim2Ragdoll : MonoBehaviour, IOnSensorCollision, IKinematicRefe
     public IReadOnlyList<Vector3> RagdollAngularVelocities => throw new NotImplementedException();
 
     public IReadOnlyList<IKinematic> Kinematics => throw new NotImplementedException();
+
+   
 
     void MimicAnimation() {
 		if (!anim.enabled)
