@@ -1,0 +1,12 @@
+{
+  "name": "ch.artanim.marathon.muscles",
+  "displayName": "Marathon Muscles",
+  "version": "0.1.0",
+  "unity": "2020.3",
+  "description": "Implementation of Muscles, and in particular modular muscles, for the marathon project.",
+  "type": "",
+  "dependencies": {
+      "org.mujoco": "2.1.5",
+      "com.unity.mathematics": "1.2.1"
+    }
+}

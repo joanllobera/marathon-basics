@@ -1,0 +1,19 @@
+{
+    "name": "MarathonMuscles",
+    "rootNamespace": "",
+    "references": [
+        "GUID:62e270fc6ccbe61c59f510a8e31d067c",
+        "GUID:d8b63aba1907145bea998dd612889d6b",
+        "GUID:85e0054f8e64b47309646d35f8851f81",
+        "GUID:fdf40967f777a1849bea040aed8c7e7d"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": true,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
