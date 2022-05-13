@@ -1,0 +1,29 @@
+{
+    "name": "Marathon.Controller",
+    "rootNamespace": "",
+    "references": [
+        "GUID:21259e388650e4af39bc7daca324115e",
+        "GUID:0b002fbfb94144ca7afafd9bc0445644",
+        "GUID:5c2b5ba89f9e74e418232e154bc5cc7a",
+        "GUID:f24656542d54d1c41b829b05e8ac98b6",
+        "GUID:fdf40967f777a1849bea040aed8c7e7d",
+        "GUID:d8b63aba1907145bea998dd612889d6b",
+        "GUID:309f1216565d76e48815092fc1a40040",
+        "GUID:85e0054f8e64b47309646d35f8851f81"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [
+        {
+            "name": "ch.artanim.lspd",
+            "expression": "0.0.3",
+            "define": "USE_LSPD"
+        }
+    ],
+    "noEngineReferences": false
+}

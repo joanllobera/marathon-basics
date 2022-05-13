@@ -1,0 +1,819 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2774db094247c4810922f4534abbb6a2, type: 3}
+  m_Name: RangeOfMotion004
+  m_EditorClassIdentifier: 
+  _values:
+  - name: mixamorig:Hips
+    lower: {x: -71.08511, y: -38.44577, z: -146.67496}
+    upper: {x: 78.370476, y: 18.965223, z: 152.45346}
+    rangeOfMotion: {x: 149.4556, y: 57.410995, z: 299.12842}
+  - name: mixamorig:LeftUpLeg
+    lower: {x: -89.16608, y: -16.620056, z: -36.461884}
+    upper: {x: 18.43238, y: 13.055063, z: 23.203127}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftLeg
+    lower: {x: 0, y: -7.1163635, z: -16.886627}
+    upper: {x: 89.80719, y: 20.836748, z: 23.781815}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftFoot
+    lower: {x: -41.295105, y: -11.680664, z: -7.339813}
+    upper: {x: 45.524837, y: 14.049965, z: 18.191715}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftToeBase
+    lower: {x: -29.162598, y: -0.0000000031964462, z: -0.00000032024144}
+    upper: {x: 6.84945, y: 0.000000013894422, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftToe_End
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightUpLeg
+    lower: {x: -86.56818, y: -15.726318, z: -3.7924194}
+    upper: {x: 28.16785, y: 32.461323, z: 23.080662}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightLeg
+    lower: {x: 0, y: -15.291168, z: -25.0896}
+    upper: {x: 88.46698, y: 20.07119, z: 16.813581}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightFoot
+    lower: {x: -51.33264, y: -7.466095, z: -19.081543}
+    upper: {x: 20.223623, y: 13.961132, z: 8.108178}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightToeBase
+    lower: {x: -36.984894, y: -0.000000034638536, z: 0}
+    upper: {x: 9.440358, y: 0.000000008551647, z: 0.0000004802762}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightToe_End
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:Spine
+    lower: {x: -2.572174, y: -15.966827, z: -9.644836}
+    upper: {x: 14.035476, y: 25.23413, z: 13.3470545}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:Spine1
+    lower: {x: -5.110718, y: -6.971344, z: -4.1516724}
+    upper: {x: 26.336224, y: 8.962416, z: 3.6413362}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:Spine2
+    lower: {x: -5.1107483, y: -6.971344, z: -4.3131104}
+    upper: {x: 26.336195, y: 8.998417, z: 3.641359}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftShoulder
+    lower: {x: -5.133972, y: -9.224976, z: -53.992462}
+    upper: {x: 9.713527, y: 37.51132, z: 16.641516}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftArm
+    lower: {x: -39.796875, y: -34.38269, z: -35.553772}
+    upper: {x: 27.977356, y: 47.737476, z: 91.96972}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftForeArm
+    lower: {x: -41.18399, y: -0.58862305, z: -7.186432}
+    upper: {x: 22.449799, y: 120.49243, z: 10.714423}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftHand
+    lower: {x: -28.464172, y: -0.779541, z: -0.057647705}
+    upper: {x: 0, y: 0.014825148, z: 1.6086904}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftHandIndex1
+    lower: {x: -0.000000069883114, y: 0, z: 0}
+    upper: {x: 0, y: 8.399371, z: 33.21421}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftHandIndex2
+    lower: {x: -0.0000000046864606, y: 0, z: 0}
+    upper: {x: 0, y: 0.000000001534073, z: 36.525787}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftHandIndex3
+    lower: {x: 0, y: -1.8467102, z: 0}
+    upper: {x: 0.0000034774555, y: 0, z: 36.525787}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftHandIndex4
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftHandMiddle1
+    lower: {x: -0.000000035094313, y: 0, z: 0}
+    upper: {x: 0, y: 4.2038174, z: 33.352253}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftHandMiddle2
+    lower: {x: -2.7456826e-12, y: -1.6882935, z: 0}
+    upper: {x: 0.000009483665, y: 0.0000000031095477, z: 36.525784}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftHandMiddle3
+    lower: {x: -0.000006692959, y: -2.007141, z: 0}
+    upper: {x: 0, y: 0.0000000031095477, z: 36.525784}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftHandMiddle4
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftHandPinky1
+    lower: {x: 0, y: -8.399384, z: 0}
+    upper: {x: 0.00000006990191, y: 0, z: 33.21421}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftHandPinky2
+    lower: {x: -0.0000000046993884, y: 0, z: 0}
+    upper: {x: 0.4786419, y: 2.393872, z: 36.525787}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftHandPinky3
+    lower: {x: 0, y: -1.2418213, z: 0}
+    upper: {x: 0.000007959132, y: 1.150327e-16, z: 36.525787}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftHandPinky4
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftHandRing1
+    lower: {x: 0, y: -4.203827, z: 0}
+    upper: {x: 0.000000035098743, y: 0, z: 33.352253}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftHandRing2
+    lower: {x: 0, y: -1.9310303, z: 0}
+    upper: {x: 0.0000014534488, y: 0.000000003103362, z: 36.525784}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftHandRing3
+    lower: {x: 0, y: -2.9032898, z: 0}
+    upper: {x: 0.0000017291877, y: 0.000000003103362, z: 36.525784}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftHandRing4
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftHandThumb1
+    lower: {x: -16.011017, y: 0, z: 0}
+    upper: {x: 0, y: 22.341463, z: 2.1186256}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftHandThumb2
+    lower: {x: 0, y: -21.340271, z: -4.697876}
+    upper: {x: 5.5998073, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftHandThumb3
+    lower: {x: -9.209747, y: -21.340271, z: -4.697876}
+    upper: {x: 5.599809, y: 0, z: 3.4622612}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftHandThumb4
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:Neck
+    lower: {x: -45.353424, y: -6.587921, z: -5.1826477}
+    upper: {x: 20.432245, y: 10.471867, z: 10.642443}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:Head
+    lower: {x: -33.12262, y: -31.705566, z: -14.159668}
+    upper: {x: 2.634492, y: 25.005377, z: 5.2364435}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:HeadTop_End
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftEye
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightEye
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightShoulder
+    lower: {x: -3.5014648, y: -30.261108, z: -14.339661}
+    upper: {x: 8.786144, y: 7.3764343, z: 49.677643}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightArm
+    lower: {x: -37.6521, y: -40.033997, z: -65.3992}
+    upper: {x: 26.474758, y: 69.43471, z: 10.122159}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightForeArm
+    lower: {x: -34.61026, y: -102.31448, z: -8.668762}
+    upper: {x: 16.555365, y: 0, z: 10.057573}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightHand
+    lower: {x: -13.191193, y: -0.051361084, z: -0.8446045}
+    upper: {x: 35.115322, y: 1.0027348, z: 0.7367918}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightHandIndex1
+    lower: {x: -0.00000013033882, y: -8.399384, z: -33.214203}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightHandIndex2
+    lower: {x: -0.0000017376499, y: 0, z: -36.525787}
+    upper: {x: 0, y: 1.2431401, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightHandIndex3
+    lower: {x: -0.0000007190134, y: 0, z: -36.525787}
+    upper: {x: 0, y: 1.8286368, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightHandIndex4
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightHandMiddle1
+    lower: {x: -0.00000011127944, y: -4.203827, z: -33.352264}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightHandMiddle2
+    lower: {x: -0.0000014364632, y: 0, z: -36.525787}
+    upper: {x: 0, y: 1.6066033, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightHandMiddle3
+    lower: {x: -4.034546, y: 0, z: -36.525787}
+    upper: {x: 0, y: 3.9096968, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightHandMiddle4
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightHandPinky1
+    lower: {x: -0.000000052180315, y: 0, z: -33.214203}
+    upper: {x: 0, y: 8.399372, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightHandPinky2
+    lower: {x: -0.000000099255224, y: 0, z: -36.525787}
+    upper: {x: 0.00019740284, y: 1.7189456, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightHandPinky3
+    lower: {x: -0.000000099255224, y: 0, z: -36.525787}
+    upper: {x: 0.0000022681704, y: 2.6211767, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightHandPinky4
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightHandRing1
+    lower: {x: -0.00000007207071, y: 0, z: -33.352264}
+    upper: {x: 0, y: 4.203817, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightHandRing2
+    lower: {x: -0.000000099218106, y: 0, z: -36.525787}
+    upper: {x: 0.0000018402432, y: 1.339234, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightHandRing3
+    lower: {x: -11.627289, y: 0, z: -36.525787}
+    upper: {x: 0, y: 4.3037877, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightHandRing4
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightHandThumb1
+    lower: {x: -16.010986, y: -22.340912, z: -2.1185608}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightHandThumb2
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 5.599814, y: 22.564453, z: 4.745267}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightHandThumb3
+    lower: {x: -2.1595764, y: -6.640045, z: -2.1732178}
+    upper: {x: 5.5998, y: 21.34025, z: 4.6979117}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightHandThumb4
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:Hips
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftUpLeg
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftLeg
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftFoot
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftToeBase
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftToe_End
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightUpLeg
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightLeg
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightFoot
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightToeBase
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightToe_End
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:Spine
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:Spine1
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:Spine2
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftShoulder
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftArm
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftForeArm
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftHand
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftHandIndex1
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftHandIndex2
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftHandIndex3
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftHandIndex4
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftHandMiddle1
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftHandMiddle2
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftHandMiddle3
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftHandMiddle4
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftHandPinky1
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftHandPinky2
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftHandPinky3
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftHandPinky4
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftHandRing1
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftHandRing2
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftHandRing3
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftHandRing4
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftHandThumb1
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftHandThumb2
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftHandThumb3
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftHandThumb4
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:Neck
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:Head
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:HeadTop_End
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftEye
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightEye
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightShoulder
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightArm
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightForeArm
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightHand
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightHandIndex1
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightHandIndex2
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightHandIndex3
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightHandIndex4
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightHandMiddle1
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightHandMiddle2
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightHandMiddle3
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightHandMiddle4
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightHandPinky1
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightHandPinky2
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightHandPinky3
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightHandPinky4
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightHandRing1
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightHandRing2
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightHandRing3
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightHandRing4
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightHandThumb1
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightHandThumb2
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightHandThumb3
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightHandThumb4
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:Hips
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftUpLeg
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftLeg
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftFoot
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftToeBase
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftToe_End
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightUpLeg
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightLeg
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightFoot
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightToeBase
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightToe_End
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:Spine
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:Spine1
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:Spine2
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftShoulder
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftArm
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftForeArm
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftHand
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftHandIndex1
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftHandIndex2
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftHandIndex3
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftHandIndex4
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftHandMiddle1
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftHandMiddle2
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftHandMiddle3
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftHandMiddle4
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftHandPinky1
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftHandPinky2
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftHandPinky3
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftHandPinky4
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftHandRing1
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftHandRing2
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftHandRing3
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftHandRing4
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftHandThumb1
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftHandThumb2
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftHandThumb3
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftHandThumb4
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:Neck
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:Head
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:HeadTop_End
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:LeftEye
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightEye
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightShoulder
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightArm
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightForeArm
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightHand
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightHandIndex1
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightHandIndex2
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightHandIndex3
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightHandIndex4
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightHandMiddle1
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightHandMiddle2
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightHandMiddle3
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightHandMiddle4
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightHandPinky1
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightHandPinky2
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightHandPinky3
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightHandPinky4
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightHandRing1
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightHandRing2
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightHandRing3
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightHandRing4
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightHandThumb1
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightHandThumb2
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightHandThumb3
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}
+  - name: mixamorig:RightHandThumb4
+    lower: {x: 0, y: 0, z: 0}
+    upper: {x: 0, y: 0, z: 0}
+    rangeOfMotion: {x: 0, y: 0, z: 0}

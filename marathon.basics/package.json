@@ -1,0 +1,11 @@
+{
+  "name": "marathon.basics",
+  "displayName": "Marathon Controller Muscles and Ragdoll",
+  "version": "0.1.0",
+  "unity": "2020.3",
+  "description": "Marathon Controller: Implementation of a Physics-based controller for the Marathon Project., Marathon Muscles: Muscles, and in particular modular muscles, that work iwth both PhysX and Mujoco. Marathon Ragdoll: Assets common to all the Ragdolls, including those in the main folder Marathon Environments.",
+  "type": "",
+  "dependencies": {
+      "com.unity.mathematics": "1.2.1"
+    }
+}

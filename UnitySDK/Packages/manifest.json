@@ -1,9 +1,7 @@
 {
   "dependencies": {
-    "ch.artanim.marathon.ragdoll": "file:../../ch.artanim.marathon.ragdoll",
-    "ch.artanim.marathon.controller": "file:../../ch.artanim.marathon.controller",
+    "marathon.basics": "file:../../marathon.basics",
     "com.joebooth.many-worlds": "https://github.com/sohojoe/many-worlds.git?path=/com.joebooth.many-worlds#v1.1.0",
-    "ch.artanim.marathon.muscles": "https://github.com/joanllobera/marathon-muscles.git?path=/ch.artanim.marathon.muscles#v0.1.4",
     "com.unity.ml-agents": "2.0.0",
     "com.unity.collab-proxy": "1.15.15",
     "com.unity.ide.rider": "3.0.13",
