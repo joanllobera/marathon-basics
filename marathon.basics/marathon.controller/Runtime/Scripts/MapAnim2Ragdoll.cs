@@ -7,9 +7,8 @@ using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.AI;
 using System.Linq.Expressions;
-using Kinematic;
 
-public class MapAnim2Ragdoll : MonoBehaviour, IOnSensorCollision, IKinematicReference
+public class MapAnim2Ragdoll : MonoBehaviour, IOnSensorCollision 
 {//previously Mocap Controller Artanim
 	public List<float> SensorIsInTouch;
 	List<GameObject> _sensors;
@@ -65,7 +64,7 @@ public class MapAnim2Ragdoll : MonoBehaviour, IOnSensorCollision, IKinematicRefe
 	// [SerializeField]
 	// float _debugDistance = 0.0f;
 
-	private List<MappingOffset> _offsetsSource2RB = null;
+	//private List<MappingOffset> _offsetsSource2RB = null;
 
     //for debugging, we disable this when setTpose in MarathonTestBedController is on
     [HideInInspector]
@@ -73,6 +72,7 @@ public class MapAnim2Ragdoll : MonoBehaviour, IOnSensorCollision, IKinematicRefe
 
 	bool _hasLazyInitialized;
 	public bool HasLazyInitialized { get => _hasLazyInitialized; }
+
 	bool _hackyNavAgentMode;
 
 	Collider _root;
@@ -98,7 +98,7 @@ public class MapAnim2Ragdoll : MonoBehaviour, IOnSensorCollision, IKinematicRefe
 		_usingMocapAnimatorController = _mocapAnimController != null;
 		if (!_usingMocapAnimatorController)
 		{
-			Debug.LogWarning("Mocap Controller is working WITHOUT AnimationController");
+			//Debug.LogWarning("Mocap Controller is working WITHOUT AnimationController");
 		}
 
 		var ragdollTransforms = 
@@ -175,18 +175,31 @@ public class MapAnim2Ragdoll : MonoBehaviour, IOnSensorCollision, IKinematicRefe
 		_head = colliders.FirstOrDefault(x=>x.name.ToLower().Contains("head"));
 		if (_head == null)
 		{
-			Debug.LogWarning($"{nameof(MapAnim2Ragdoll)}.{nameof(LazyInitialize)}() can not find the head. ");
+			//Debug.LogWarning($"{nameof(MapAnim2Ragdoll)}.{nameof(LazyInitialize)}() can not find the head. ");
 		}
 
     }
 
-	public void DynamicallyCreateRagdollForMocap()
+	void DynamicallyCreateRagdollForMocap()
 	{
 		// Find Ragdoll in parent
 		Transform parent = this.transform.parent;
-		ProcRagdollAgent[] ragdolls = parent.GetComponentsInChildren<ProcRagdollAgent>(true);
-		Assert.AreEqual(ragdolls.Length, 1, "code only supports one RagDollAgent");
-		ProcRagdollAgent ragDoll = ragdolls[0];
+		DummyRagdollAgent[] ragdolls = parent.GetComponentsInChildren<DummyRagdollAgent>(true);
+
+		GameObject ragDoll = null;
+		if (ragdolls.Length > 0)
+		{
+			Assert.AreEqual(ragdolls.Length, 1, "code only supports one RagDollAgent");
+			//ProcRagdollAgent ragDoll = ragdolls[0];
+			ragDoll = ragdolls[0].gameObject;
+
+		}
+		else { //if there is no ragdoll, we might be trying the PD controllers. In this case:
+
+			AnimationAsTargetPose temp = parent.GetComponentInChildren<AnimationAsTargetPose>();
+			ragDoll = temp.gameObject;
+
+		}
 		var ragdollForMocap = new GameObject("RagdollForMocap");
 		ragdollForMocap.transform.SetParent(this.transform, false);
 		Assert.AreEqual(ragDoll.transform.childCount, 1, "code only supports 1 child");
@@ -202,24 +215,37 @@ public class MapAnim2Ragdoll : MonoBehaviour, IOnSensorCollision, IKinematicRefe
 
 		// swap ArticulatedBody for RidgedBody
         List<string> bodiesNamesToDelete = new List<string>();
-		foreach (var abody in clone.GetComponentsInChildren<ArticulationBody>())
+
+		List<GameObject> gos = clone.GetComponentsInChildren<ArticulationBody>().Select(x => x.gameObject).ToList();
+		if (gos.Count == 0)
+			gos = clone.GetComponentsInChildren<LSPDArticulation>().Select(x => x.gameObject).ToList();
+
+		foreach (GameObject bodyGameobject in gos)
 		{
-			var bodyGameobject = abody.gameObject;
-			//var rb = bodyGameobject.AddComponent<Rigidbody>();
+			//var bodyGameobject = abody.gameObject;
+			ArticulationBody abody = bodyGameobject.GetComponent<ArticulationBody>();
+			if (abody != null) {
+				DestroyImmediate(abody);
+			}
 
-			float mass = abody.mass;
-			bool useGravity = abody.useGravity;
-			DestroyImmediate(abody);
-			bodyGameobject.AddComponent<Rigidbody>();
+			LSPDArticulation aabody = bodyGameobject.GetComponent<LSPDArticulation>();
+			if (aabody != null)
+			{
+				DestroyImmediate(aabody);
+			}
+			//float mass = abody.mass;
+			//bool useGravity = abody.useGravity;
+			
 			Rigidbody rb = bodyGameobject.GetComponent<Rigidbody>();
+			if(rb == null)
+				rb = bodyGameobject.AddComponent<Rigidbody>();
 
-			rb.mass = mass;
-			rb.useGravity = useGravity;
+
 			// it makes no sense but if i do not set the layer here, then some objects dont have the correct layer
 			rb.gameObject.layer  = this.gameObject.layer;
 			
 		}
-		
+
 		// make Kinematic
 		foreach (var rb in clone.GetComponentsInChildren<Rigidbody>())
 		{
@@ -276,6 +302,7 @@ public class MapAnim2Ragdoll : MonoBehaviour, IOnSensorCollision, IKinematicRefe
 			return;
 
         //if (!_usesMotionMatching)
+		if(anim != null)
         {
             AnimatorStateInfo stateInfo = anim.GetCurrentAnimatorStateInfo(0);
             AnimatorClipInfo[] clipInfo = anim.GetCurrentAnimatorClipInfo(0);
@@ -293,14 +320,13 @@ public class MapAnim2Ragdoll : MonoBehaviour, IOnSensorCollision, IKinematicRefe
 		velocity -= _snapOffset;
 		velocity /= timeDelta;
 		CenterOfMassVelocity = velocity;
-
-
 		CenterOfMassVelocityMagnitude = CenterOfMassVelocity.magnitude;
 		CenterOfMassVelocityInRootSpace = transform.InverseTransformVector(velocity);
 		CenterOfMassVelocityMagnitudeInRootSpace = CenterOfMassVelocityInRootSpace.magnitude;
 		HorizontalDirection = new Vector3(0f, transform.eulerAngles.y, 0f);
 		LastRootPositionInWorldSpace = _root.transform.position;
-		LastHeadPositionInWorldSpace = _head.transform.position;
+		if(_head!= null)
+			LastHeadPositionInWorldSpace = _head.transform.position;
 
 		var newPosition = _ragDollRigidbody
 			.Select(x=>x.position)
@@ -324,19 +350,12 @@ public class MapAnim2Ragdoll : MonoBehaviour, IOnSensorCollision, IKinematicRefe
 	float _lastPositionTime = float.MinValue;
 	Vector3 _snapOffset = Vector3.zero;
 
-    public IReadOnlyList<Transform> RagdollTransforms => _ragdollTransforms;
-
-    public IReadOnlyList<Vector3> RagdollLinVelocities => throw new NotImplementedException();
-
-    public IReadOnlyList<Vector3> RagdollAngularVelocities => throw new NotImplementedException();
-
-    public IReadOnlyList<IKinematic> Kinematics => throw new NotImplementedException();
-
-   
+  
 
     void MimicAnimation() {
-		if (!anim.enabled)
-			return;
+		//if (!anim.enabled)
+		//	return;
+
 		// copy position for root (assume first target is root)
 		_ragdollTransforms[0].position = _animTransforms[0].position;
 		// copy rotation
@@ -345,8 +364,6 @@ public class MapAnim2Ragdoll : MonoBehaviour, IOnSensorCollision, IKinematicRefe
 			_ragdollTransforms[i].rotation = _animTransforms[i].rotation;
 		}
 	}
-
-	
 
 	
     public Vector3 GetCenterOfMass()
@@ -363,10 +380,6 @@ public class MapAnim2Ragdoll : MonoBehaviour, IOnSensorCollision, IKinematicRefe
         return centerOfMass;
     }
 
-	public Vector3 GetCenterOfMassVelocity()
-	{
-		return _ragDollRigidbody.Select(rb => rb.velocity * rb.mass).Sum() / _ragDollRigidbody.Select(rb => rb.mass).Sum();
-	}
 
 	public void OnReset(Quaternion resetRotation)
 	{
@@ -445,6 +458,8 @@ public class MapAnim2Ragdoll : MonoBehaviour, IOnSensorCollision, IKinematicRefe
 		// root.gameObject.SetActive(true);
 		foreach (var targetRb in targets)
         {
+
+
 			var stat = _ragDollRigidbody.First(x=>x.name == targetRb.name);
 			if (targetRb.isRoot)
 				continue;
@@ -453,9 +468,12 @@ public class MapAnim2Ragdoll : MonoBehaviour, IOnSensorCollision, IKinematicRefe
 
 			if (targetRb.jointType == ArticulationJointType.SphericalJoint)
 			{
+
+				/*
 				float stiffness = 0f;
 				float damping = float.MaxValue;
-				float forceLimit = 0f;
+				float forceLimit = 0f;*/
+
 				// if (shouldDebug)
 				// 	didDebug = true;
 				Vector3 decomposedRotation = Utils.GetSwingTwist(stat.transform.localRotation);
@@ -467,9 +485,9 @@ public class MapAnim2Ragdoll : MonoBehaviour, IOnSensorCollision, IKinematicRefe
 					var drive = targetRb.xDrive;
 					var deg = decomposedRotation.x;
 					thisJointPosition[j++] = deg * Mathf.Deg2Rad;
-					drive.stiffness = stiffness;
+					/*drive.stiffness = stiffness;
 					drive.damping = damping;
-					drive.forceLimit = forceLimit;
+					drive.forceLimit = forceLimit;*/
 					drive.target = deg;
 					targetRb.xDrive = drive;
 				}
@@ -478,9 +496,9 @@ public class MapAnim2Ragdoll : MonoBehaviour, IOnSensorCollision, IKinematicRefe
 					var drive = targetRb.yDrive;
 					var deg = decomposedRotation.y;
 					thisJointPosition[j++] = deg * Mathf.Deg2Rad;
-					drive.stiffness = stiffness;
+					/*drive.stiffness = stiffness;
 					drive.damping = damping;
-					drive.forceLimit = forceLimit;
+					drive.forceLimit = forceLimit;*/
 					drive.target = deg;
 					targetRb.yDrive = drive;
 				}
@@ -489,9 +507,9 @@ public class MapAnim2Ragdoll : MonoBehaviour, IOnSensorCollision, IKinematicRefe
 					var drive = targetRb.zDrive;
 					var deg = decomposedRotation.z;
 					thisJointPosition[j++] = deg * Mathf.Deg2Rad;
-					drive.stiffness = stiffness;
+					/*drive.stiffness = stiffness;
 					drive.damping = damping;
-					drive.forceLimit = forceLimit;
+					drive.forceLimit = forceLimit;*/
 					drive.target = deg;
 					targetRb.zDrive = drive;
 				}
@@ -522,6 +540,109 @@ public class MapAnim2Ragdoll : MonoBehaviour, IOnSensorCollision, IKinematicRefe
 			childAb.velocity = Vector3.zero;
 		}
     }
+
+	public void CopyStatesToLinearPD(GameObject target)
+	{
+		LazyInitialize();
+
+
+		var targets = target.GetComponentsInChildren<ArticulationBody>().ToList();
+		if (targets?.Count == 0)
+			return;
+		var root = targets.First(x => x.isRoot);
+		
+		var rstat = _ragDollRigidbody.First(x => x.name == root.name);
+		root.TeleportRoot(rstat.position, rstat.rotation);
+		root.transform.position = rstat.position;
+		root.transform.rotation = rstat.rotation;
+	
+		foreach (var targetRb in targets)
+		{
+
+			
+			var stat = _ragDollRigidbody.FirstOrDefault(x => x.name == targetRb.name);
+			if(stat==null)
+				Debug.Log("name: " + targetRb.name + " not found");
+
+			if (targetRb.isRoot)
+				continue;
+			// bool shouldDebug = targetRb.name == "articulation:mixamorig:RightArm";
+			// bool didDebug = false;
+
+			if (targetRb.jointType == ArticulationJointType.SphericalJoint)
+			{
+			
+				/*float stiffness = 0f;
+				float damping = 0f;
+				float forceLimit = 100000;
+				*/
+
+				Vector3 decomposedRotation = Utils.GetSwingTwist(stat.transform.localRotation);
+				int j = 0;
+				List<float> thisJointPosition = Enumerable.Range(0, targetRb.dofCount).Select(x => 0f).ToList();
+
+				if (targetRb.twistLock == ArticulationDofLock.LimitedMotion)
+				{
+					var drive = targetRb.xDrive;
+					var deg = decomposedRotation.x;
+					thisJointPosition[j++] = deg * Mathf.Deg2Rad;
+				/*	drive.stiffness = stiffness;
+					drive.damping = damping;
+					drive.forceLimit = forceLimit;*/
+					drive.target = deg;
+					targetRb.xDrive = drive;
+				}
+				if (targetRb.swingYLock == ArticulationDofLock.LimitedMotion)
+				{
+					var drive = targetRb.yDrive;
+					var deg = decomposedRotation.y;
+					thisJointPosition[j++] = deg * Mathf.Deg2Rad;
+				/*	drive.stiffness = stiffness;
+					drive.damping = damping;
+					drive.forceLimit = forceLimit;*/
+					drive.target = deg;
+					targetRb.yDrive = drive;
+				}
+				if (targetRb.swingZLock == ArticulationDofLock.LimitedMotion)
+				{
+					var drive = targetRb.zDrive;
+					var deg = decomposedRotation.z;
+					thisJointPosition[j++] = deg * Mathf.Deg2Rad;
+				/*	drive.stiffness = stiffness;
+					drive.damping = damping;
+					drive.forceLimit = forceLimit;*/
+					drive.target = deg;
+					targetRb.zDrive = drive;
+				}
+				switch (targetRb.dofCount)
+				{
+					case 1:
+						targetRb.jointPosition = new ArticulationReducedSpace(thisJointPosition[0]);
+						break;
+					case 2:
+						targetRb.jointPosition = new ArticulationReducedSpace(
+							thisJointPosition[0],
+							thisJointPosition[1]);
+						break;
+					case 3:
+						targetRb.jointPosition = new ArticulationReducedSpace(
+							thisJointPosition[0],
+							thisJointPosition[1],
+							thisJointPosition[2]);
+						break;
+					default:
+						break;
+				}
+			}
+		}
+		foreach (var childAb in root.GetComponentsInChildren<ArticulationBody>())
+		{
+			childAb.angularVelocity = Vector3.zero;
+			childAb.velocity = Vector3.zero;
+		}
+	}
+
+
 	public void CopyVelocityTo(GameObject targetGameObject, Vector3 velocity)
     {
 		LazyInitialize();
@@ -596,7 +717,7 @@ public class MapAnim2Ragdoll : MonoBehaviour, IOnSensorCollision, IKinematicRefe
 		var c = (float)_ragDollRigidbody.Count;
 		aveVelocity = aveVelocity / c;
 		aveAngularVelocity = aveAngularVelocity / c;
-		c = c;
+		//c = c;
 	}
 	public Vector3 SnapTo(Vector3 snapPosition)
 	{
@@ -611,14 +732,4 @@ public class MapAnim2Ragdoll : MonoBehaviour, IOnSensorCollision, IKinematicRefe
 		LazyInitialize();
 		return GetComponentsInChildren<Rigidbody>().ToList();
 	}
-
-    public void TeleportRoot(Vector3 targetPosition)
-    {
-        throw new NotImplementedException();
-    }
-
-    public void TeleportRoot(Vector3 targetPosition, Quaternion targetRotation)
-    {
-        throw new NotImplementedException();
-    }
 }
