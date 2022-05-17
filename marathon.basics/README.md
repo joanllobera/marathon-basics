@@ -1,6 +1,6 @@
 # README
 
-This repository contains the backbone of the Marathon project.
+This folder contains the backbone of the Marathon project.
 
 It is organized in 3 subfolders:
 
@@ -35,7 +35,5 @@ MarathonMuscles --> Mujoco.Runtime
 The packages *Marathon.SharedRagdoll*, *Marathon.Controller* and *MarathonMuscles* are stored in repository [GitHub - joanllobera/marathon-basics](https://github.com/joanllobera/marathon-basics)
 
 The scripts in MarathonMuscles are contributions from github user **Balint-H**
-
-
 
 There is a public version of the Marathon project that imports it and use  it as  apropriate Unity3D assemblies [here](https://github.com/joanllobera/marathon-envs/tree/feature/mujoco+LSPD) (as of May 2022).

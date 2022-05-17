@@ -33,6 +33,17 @@ namespace MotorUpdate
         }
 
 
+        /*
+         
+            var curState = new float[] { (float)e.data->qpos[actuator.Joint.QposAddress],
+                                             (float)e.data->qvel[actuator.Joint.DofAddress],
+                                             (float)e.data->qacc[actuator.Joint.DofAddress]};
+                var targetState = trackPosition ? new float[] { (float)e.data->qpos[reference.QposAddress]+action,
+                                                                    trackVelocity? (float)e.data->qvel[reference.DofAddress] : 0f} : new float[] { action, 0f };
+                float torque = updateRule.GetTorque(curState, targetState);
+         
+         */
+
 
         //TODO: can these 3 methods replace the previous ones?
         public virtual void Initialize(ModularMuscles muscles = null, float dT = 1 / 60) { }
@@ -47,7 +58,7 @@ namespace MotorUpdate
             
         }
 
-        public virtual float3[] GetJointForces( float3[] targetRotation)
+        public virtual float3[] GetJointForces(IArticulation[] joints, float3[] targetRotation)
         {
             
             Debug.LogWarning("you are calling a GetJointForces function that allways return 0, it needs to be reimplmeented");
@@ -145,7 +156,7 @@ namespace MotorUpdate
 
         public float[] stateVector => new float[] { Position, Velocity, Acceleration };
     }
-
+    /*
     public class MjPositionState : IState
     {
         readonly private MjActuator mjActuator;
@@ -169,6 +180,8 @@ namespace MotorUpdate
 
         public float[] stateVector => new float[] { Position, Velocity, Acceleration };
     }
+    */
+
 
     public struct StaticState : IState
     {
@@ -228,7 +241,7 @@ namespace MotorUpdate
         public float Mass { get; }
 
         public GameObject gameObject { get; }
-
+       // public void AddRelativeTorque(float3 torque);
     }
 
 
@@ -256,6 +269,9 @@ namespace MotorUpdate
         public GameObject gameObject => _ab.gameObject;
         public string Name => _ab.name;
         public float Mass => _ab.mass;
+
+
+
     }
 
     public class RigidbodyAdapter : IReducedState

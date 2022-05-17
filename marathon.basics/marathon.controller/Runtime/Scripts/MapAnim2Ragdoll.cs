@@ -8,6 +8,8 @@ using UnityEngine.Assertions;
 using UnityEngine.AI;
 using System.Linq.Expressions;
 
+using MotorUpdate;
+
 public class MapAnim2Ragdoll : MonoBehaviour, IOnSensorCollision 
 {//previously Mocap Controller Artanim
 	public List<float> SensorIsInTouch;
@@ -20,8 +22,8 @@ public class MapAnim2Ragdoll : MonoBehaviour, IOnSensorCollision
 	public float Lenght;
 	public bool IsLoopingAnimation;
 
-	[SerializeField]
-	Rigidbody _rigidbodyRoot;
+	//[SerializeField]
+	//Rigidbody _rigidbodyRoot;
 
 	List<Transform> _animTransforms;
 	
@@ -180,11 +182,12 @@ public class MapAnim2Ragdoll : MonoBehaviour, IOnSensorCollision
 
     }
 
-	void DynamicallyCreateRagdollForMocap()
+	public void DynamicallyCreateRagdollForMocap()
 	{
 		// Find Ragdoll in parent
 		Transform parent = this.transform.parent;
-		DummyRagdollAgent[] ragdolls = parent.GetComponentsInChildren<DummyRagdollAgent>(true);
+	
+		Agent[] ragdolls = parent.GetComponentsInChildren<Agent>(true);//ll ragdoll agents derive from Agent
 
 		GameObject ragDoll = null;
 		if (ragdolls.Length > 0)
@@ -196,8 +199,8 @@ public class MapAnim2Ragdoll : MonoBehaviour, IOnSensorCollision
 		}
 		else { //if there is no ragdoll, we might be trying the PD controllers. In this case:
 
-			AnimationAsTargetPose temp = parent.GetComponentInChildren<AnimationAsTargetPose>();
-			ragDoll = temp.gameObject;
+		
+			ragDoll = GetComponent<ModularMuscles>().gameObject; //gameObject;
 
 		}
 		var ragdollForMocap = new GameObject("RagdollForMocap");
@@ -206,13 +209,16 @@ public class MapAnim2Ragdoll : MonoBehaviour, IOnSensorCollision
 		var ragdollRoot = ragDoll.transform.GetChild(0);
 		// clone the ragdoll root
 		var clone = Instantiate(ragdollRoot);
+
+	
+
 		// remove '(clone)' from names
 		foreach (var t in clone.GetComponentsInChildren<Transform>())
 		{
 			t.name = t.name.Replace("(Clone)", "");
 		}
 
-
+		/*
 		// swap ArticulatedBody for RidgedBody
         List<string> bodiesNamesToDelete = new List<string>();
 
@@ -244,7 +250,47 @@ public class MapAnim2Ragdoll : MonoBehaviour, IOnSensorCollision
 			// it makes no sense but if i do not set the layer here, then some objects dont have the correct layer
 			rb.gameObject.layer  = this.gameObject.layer;
 			
+		}*/
+
+
+		//TODO: replace with something that is agnostic to what articulation is used
+
+
+		// swap ArticulatedBody for RidgedBody
+		List<string> bodiesNamesToDelete = new List<string>();
+		foreach (var abody in clone.GetComponentsInChildren<IArticulation>())
+		{
+			var bodyGameobject = abody.gameObject;
+			
+			float mass = abody.Mass;
+
+			ArticulationBody ab = bodyGameobject.GetComponent<ArticulationBody>();
+			if (abody != null)
+			{
+				DestroyImmediate(ab);
+			}
+			else {
+				//MjBody ab = bodyGameobject.GetComponent<MjBody>();
+				Debug.LogError("haven't yet added the automated reference clone when the reference is set up with Mujoco Bodies or anything that is not ArticulationBody");
+				
+			}
+			bodyGameobject.AddComponent<Rigidbody>();
+			Rigidbody rb = bodyGameobject.GetComponent<Rigidbody>();
+
+			rb.mass = mass;
+			//rb.useGravity = useGravity;
+			// it makes no sense but if i do not set the layer here, then some objects dont have the correct layer
+			rb.gameObject.layer = this.gameObject.layer;
+
 		}
+
+		// make Kinematic
+		foreach (var rb in clone.GetComponentsInChildren<Rigidbody>())
+		{
+			rb.isKinematic = true;
+		}
+
+
 
 		// make Kinematic
 		foreach (var rb in clone.GetComponentsInChildren<Rigidbody>())
@@ -271,7 +317,7 @@ public class MapAnim2Ragdoll : MonoBehaviour, IOnSensorCollision
 		}
 
 		// set the root
-		this._rigidbodyRoot = clone.GetComponent<Rigidbody>();
+		//this._rigidbodyRoot = clone.GetComponent<Rigidbody>();
 		// set the layers
 		ragdollForMocap.layer = this.gameObject.layer;
 		foreach (Transform child in ragdollForMocap.GetComponentInChildren<Transform>())

@@ -153,11 +153,11 @@ public class ArticulationMusclesSimplified : ModularMuscles
     }
     
 
-    void ApplyRuleAsRelativeTorques(float3[] targetRotation) {
+    void ApplyRuleAsRelativeTorques(IArticulation[] joints, float3[] targetRotation) {
 
 
 
-        float3[] torques = updateRule.GetJointForces( targetRotation);
+        float3[] torques = updateRule.GetJointForces(joints, targetRotation);
         for (int i = 0; i < _motors.Count; i++) {
 
              _motors[i].AddRelativeTorque(torques[i]);
